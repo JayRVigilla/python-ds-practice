@@ -18,3 +18,6 @@ def single_letter_count(word, letter):
         if char.lower() == letter.lower():
             count += 1
     return count
+
+# could've been
+# return word.lower().count(letter.lower())
