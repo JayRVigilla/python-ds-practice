@@ -40,3 +40,24 @@ def list_manipulation(lst, command, location, value=None):
         >>> list_manipulation(lst, 'add', 'dunno') is None
         True
     """
+    # have location give index for beginning or end
+    if location != "beginning" or "end":
+        return(None)
+    if location == "beginning":
+        locIndex = 0
+    else:
+        locIndex = -1
+
+    # handles invalid command
+    if command != "remove" or "add":
+        return(None)
+
+    # create remove situation
+    if command == "remove":
+        return(lst.pop(locIndex))
+
+    # create add situation
+    if command == "add":
+        lst.insert(locIndex, value)
+        return(lst)
+
