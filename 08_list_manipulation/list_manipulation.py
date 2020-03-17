@@ -41,23 +41,34 @@ def list_manipulation(lst, command, location, value=None):
         True
     """
     # have location give index for beginning or end
-    if location != "beginning" or "end":
-        return(None)
+    locIndex = None
+
+    if location != "beginning":
+        if location != "end":
+            return None
     if location == "beginning":
         locIndex = 0
     else:
         locIndex = -1
 
-    # handles invalid command
-    if command != "remove" or "add":
-        return(None)
+    # # handles invalid command
+    # if command != "remove":
+    #     if command != "add":
+    #         return None
 
     # create remove situation
     if command == "remove":
-        return(lst.pop(locIndex))
+        return lst.pop(locIndex)
 
     # create add situation
     if command == "add":
-        lst.insert(locIndex, value)
-        return(lst)
-
+        if locIndex == 0:
+            lst.insert(locIndex, value)
+        else:
+            # insert didn't always add to end of lst,
+            # sometimes to second to last. Why?
+            lst.append(value)
+        return lst
+    # handles invalid command
+    else:
+        return None
